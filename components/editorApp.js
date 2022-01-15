@@ -5,9 +5,111 @@ import * as style from "./editor.module.css";
 import cn from "classnames";
 
 const EditorApp = () => {
-  const [html, setHtml] = useLocalStorage("html", "");
-  const [css, setCss] = useLocalStorage("css", "");
-  const [js, setJs] = useLocalStorage("js", "");
+  //html
+  const [html, setHtml] = useLocalStorage(
+    "html",
+    `<div class="container">
+  <div class="card">
+     <img class="frontside___button" id="toggleCard"  src="https://ayseimg.s3.amazonaws.com/ayseSiteOriginal.png" alt="frontside" /> 
+    <div class="backside__form">
+      <img  class="backside__img" src="https://ayseimg.s3.amazonaws.com/back+of+card.png" alt="backside" />
+     </div>
+  </div>
+</div>`
+  );
+  //css
+  const [css, setCss] = useLocalStorage(
+    "css",
+    `html {
+  height: 100%
+}
+
+body {
+  position: relative;
+  min-height: 100%;
+  background: #B76E79;
+}
+img {
+  vertical-align: middle;
+  max-width: 100%;
+}
+
+ /* Intro animation */
+@keyframes intro {
+  from {
+    opacity: 0;
+    top: 0;
+  }
+  to {
+    opacity: 1;
+    top: 50%;
+  }
+}
+
+.container {
+  position: absolute;
+  width: 50%;
+  left: 50%;
+  vertical-align: center;
+  transform: translate(-50%,-70%);
+  animation: intro .7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+@media (min-width: 1500px) {
+    .container {
+        transform: translate(-30%,-70%);
+    }
+}
+
+.card {
+  max-width: 640px;
+  position: relative;
+}
+.card--open .backside__form {
+  visibility: visible;
+  height: auto;
+  opacity: 1;
+  transform: translateY(4em);
+  padding-top: 10em;
+}
+@media (min-width: 770px) {
+    .card--open .backside__form {
+  transform: translateY(14em);
+  padding-top: 10em;
+}
+}
+
+.frontside___button {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
+  width: 100%;
+  display: block;
+  transition: transform .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.backside__form {
+  position: relative;
+  visibility: hidden;
+  padding: 3em;
+  border-radius: .25em;
+  transition: 
+    opacity .4s ease-in-out,
+    height .4s ease-in-out,
+    transform .4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+    padding .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}`
+  );
+  //js
+  const [js, setJs] = useLocalStorage(
+    "js",
+    `document.getElementById('toggleCard').addEventListener('click', function () {
+  [].map.call(document.querySelectorAll('.card'), function(el) {
+    el.classList.toggle('card--open');
+  });
+});`
+  );
   const [srcDoc, setSrcDoc] = useState("");
 
   useEffect(() => {
