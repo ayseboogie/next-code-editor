@@ -18,7 +18,6 @@ const Editor = (props) => {
   }
 
   return (
-    // <div className="flex grow basis-0 flex-col p-2">
     <div className={className}>
       <div className="flex justify-between text-white rounded-t-lg py-2 pr-2 pl-4 bg-zinc-700">
         {editorTitle}
