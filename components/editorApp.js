@@ -27,7 +27,7 @@ const EditorApp = () => {
 body {
   position: relative;
   min-height: 100%;
-  background: #B76E79;
+  background: #1F2937;
 }
 img {
   vertical-align: middle;
