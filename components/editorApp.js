@@ -56,22 +56,27 @@ img {
 }
 @media (min-width: 1500px) {
     .container {
-        transform: translate(-30%,-70%);
+        transform: translate(-30%,-60%);
     }
 }
 
 .card {
-  max-width: 640px;
+  max-width: 400px;
   position: relative;
+}
+@media (min-width: 2000px) {
+    .card {
+  max-width: 640px;
+\t}
 }
 .card--open .backside__form {
   visibility: visible;
   height: auto;
   opacity: 1;
-  transform: translateY(4em);
+  transform: translateY(6em);
   padding-top: 10em;
 }
-@media (min-width: 770px) {
+@media (min-width: 2000px) {
     .card--open .backside__form {
   transform: translateY(14em);
   padding-top: 10em;
