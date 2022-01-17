@@ -97,7 +97,7 @@ img {
 .backside__form {
   position: relative;
   visibility: hidden;
-  padding: 3em;
+  width: 100%;
   border-radius: .25em;
   transition: 
     opacity .4s ease-in-out,
