@@ -30,7 +30,6 @@ body {
   background: #1F2937;
 }
 img {
-  vertical-align: middle;
   max-width: 100%;
 }
 
@@ -48,15 +47,27 @@ img {
 
 .container {
   position: absolute;
-  width: 50%;
+  width: 90%;
   left: 50%;
   vertical-align: center;
-  transform: translate(-50%,-70%);
+  transform: translate(-50%,-60%);
   animation: intro .7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+@media (min-width: 600px) {
+    .container {
+        width: 50%;
+        transform: translate(-50%,-90%);
+    }
+}
+@media (min-width: 800px) {
+    .container {
+        width: 50%;
+        transform: translate(-50%,-70%);
+    }
 }
 @media (min-width: 1500px) {
     .container {
-        transform: translate(-30%,-60%);
+        transform: translate(-30%,-70%);
     }
 }
 
