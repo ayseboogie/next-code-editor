@@ -167,7 +167,7 @@ img {
           onChange={setJs}
         />
       </div>
-      <div style={{ height: "60vh" }}>
+      <div style={{ height: "68vh" }}>
         <iframe
           srcDoc={srcDoc}
           title="output"
