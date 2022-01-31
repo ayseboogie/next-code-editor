@@ -10,9 +10,9 @@ const EditorApp = () => {
     "html",
     `<div class="container">
   <div class="card">
-     <img class="frontside___button" id="toggleCard"  src="https://ayseimg.s3.amazonaws.com/ayseSiteOriginal.png" alt="frontside" /> 
-    <div class="backside__form">
-      <img  class="backside__img" src="https://ayseimg.s3.amazonaws.com/back+of+card.png" alt="backside" />
+     <img class="frontside" id="toggleCard"  src="https://ayseimg.s3.amazonaws.com/ayseSiteOriginal.png" alt="frontside" />
+    <div class="backside">
+      <img  src="https://ayseimg.s3.amazonaws.com/back+of+card.png" alt="backside" />
      </div>
   </div>
 </div>`
@@ -21,108 +21,85 @@ const EditorApp = () => {
   const [css, setCss] = useLocalStorage(
     "css",
     `html {
-  height: 100%
-}
+    height: 100%
+  }
 
-body {
-  position: relative;
-  min-height: 100%;
-  background: #1F2937;
-}
-img {
-  max-width: 100%;
-}
+  body {
+    background: #1F2937;
+  }
 
- /* Intro animation */
+  img {
+    max-width: 100%;
+  }
+
+  /* Intro animation */
 @keyframes intro {
-  from {
-    opacity: 0;
-    top: 0;
+    from {
+      opacity: 0;
+      top: 0;
+    }
+    to {
+      opacity: 1;
+      top: 10%;
+    }
   }
-  to {
-    opacity: 1;
-    top: 50%;
-  }
-}
 
 .container {
-  position: absolute;
-  width: 90%;
   left: 50%;
-  vertical-align: center;
-  transform: translate(-50%,-60%);
+  position: absolute;
   animation: intro .7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-}
-@media (min-width: 600px) {
-    .container {
-        width: 50%;
-        transform: translate(-50%,-90%);
-    }
-}
-@media (min-width: 800px) {
-    .container {
-        width: 50%;
-        transform: translate(-50%,-70%);
-    }
-}
-@media (min-width: 1500px) {
-    .container {
-        transform: translate(-30%,-70%);
-    }
-}
+  }
 
 .card {
-  max-width: 400px;
-  position: relative;
-}
+  left: -50%;
+   min-width: 300px;
+    max-width: 400px;
+    position: relative;
+  }
 @media (min-width: 2000px) {
-    .card {
-  max-width: 640px;
-\t}
-}
-.card--open .backside__form {
-  visibility: visible;
-  height: auto;
-  opacity: 1;
-  transform: translateY(6em);
-  padding-top: 10em;
-}
+  .card {
+      max-width: 640px;
+    }
+  }
+.cardOpen .backside {
+    visibility: visible;
+    height: auto;
+    opacity: 1;
+    transform: translateY(6em);
+    padding-top: 10em;
+  }
 @media (min-width: 2000px) {
-    .card--open .backside__form {
-  transform: translateY(14em);
-  padding-top: 10em;
-}
-}
+  .cardOpen .backside {
+      transform: translateY(14em);
+    }
+  }
 
-.frontside___button {
-  position: absolute;
-  z-index: 1;
-  left: 50%;
-  transform: translateX(-50%);
-  overflow: hidden;
-  width: 100%;
-  display: block;
-  transition: transform .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
+.frontside {
+    position: absolute;
+    z-index: 1;
+    overflow: hidden;
+    width: 100%;
+    transition: transform .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
 
-.backside__form {
-  position: relative;
-  visibility: hidden;
-  width: 100%;
-  border-radius: .25em;
-  transition: 
-    opacity .4s ease-in-out,
-    height .4s ease-in-out,
-    transform .4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
-    padding .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}`
+.backside {
+    position: relative;
+    visibility: hidden;
+    width: 100%;
+    border-radius: .25em;
+    transition:
+        opacity .4s ease-in-out,
+        height .4s ease-in-out,
+        transform .4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+        padding .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }`
   );
   //js
   const [js, setJs] = useLocalStorage(
     "js",
     `document.getElementById('toggleCard').addEventListener('click', function () {
   [].map.call(document.querySelectorAll('.card'), function(el) {
-    el.classList.toggle('card--open');
+    el.classList.toggle('cardOpen');
   });
 });`
   );
